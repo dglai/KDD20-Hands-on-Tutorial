@@ -29,15 +29,22 @@ Step 2: Set up ssh passwordless access between machines in the cluster.
 Step 3: Download the launch script:
 ```bash
 wget https://raw.githubusercontent.com/dmlc/dgl/master/tools/launch.py
+wget https://raw.githubusercontent.com/dmlc/dgl/master/tools/copy_partitions.py
 ```
 
-Step 4: Train the model:
+Step 4: Copy data to the cluster
+```bash
+python3 copy_partitions.py --ip_config ip_config.txt --workspace ~/KDD20-Hands-on-Tutorial/5-distributed/ --rel_data_path 4part_data --part_config 4part_data/ogb-product.json
+```
+
+Step 5: Train the model:
 Standalone mode:
 ```bash
 python3 -m torch.distributed.launch  Distributed\ Node\ Classification.py --ip_config ip_config.txt --num-epochs 10 --batch-size 5000 --num-hidden 512 --conf_path standalone_data/ogbn-products.json
 ```
 
 Distributed mode:
+When running distributed training, a user needs to ensure that the training script and its dependencies have been copied to the workspace of all the machines.
 ```bash
 python3 launch.py --workspace ~/workspace/KDD20-Hands-on-Tutorial/5-distributed --num_client 4 --conf_path 4part_data/ogbn-products.json --ip_config ip_config.txt "python3 Distributed\ Node\ Classification.py --ip_config ip_config.txt --num-epochs 10 --batch-size 5000 --num-hidden 512 --conf_path standalone_data/ogbn-products.json"
 
