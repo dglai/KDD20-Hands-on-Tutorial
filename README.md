@@ -10,5 +10,5 @@ Presenters: Da Zheng, Minjie Wang, Quan Gan, Zheng Zhang, George Karypis
 * Overview of Graph Neural Networks and training methods
 * Overview of Deep Graph Library
 * GNN models for basic graph tasks
-* GNN training on large graphs
-* GNN models for real-world applications
+* Stochastic GNN training with multi-GPU acceleration
+* Distributed training on real-world giant graphs
