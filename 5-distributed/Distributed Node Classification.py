@@ -281,7 +281,7 @@ nodes = dgl.distributed.node_split(np.ones(g.number_of_nodes(), dtype=bool), g.g
 
 # The sampler generates a mini-batch for 1-layer GraphSage. Thus, we can use very large batch size.
 sampler = dgl.dataloading.MultiLayerNeighborSampler([None])
-test_dataloader = dgl.dataloading.DistNodeDataLoader(
+test_dataloader = dgl.dataloading.NodeDataLoader(
     g, nodes, sampler,
     batch_size=10000,
     shuffle=False,
