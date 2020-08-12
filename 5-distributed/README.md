@@ -46,8 +46,8 @@ python3 -m torch.distributed.launch  Distributed\ Node\ Classification.py --ip_c
 Distributed mode:
 When running distributed training, a user needs to ensure that the training script and its dependencies have been copied to the workspace of all the machines.
 ```bash
-python3 launch.py --workspace ~/workspace/KDD20-Hands-on-Tutorial/5-distributed --num_client 4 --conf_path 4part_data/ogbn-products.json --ip_config ip_config.txt "python3 Distributed\ Node\ Classification.py --ip_config ip_config.txt --num-epochs 10 --batch-size 5000 --num-hidden 512 --conf_path standalone_data/ogbn-products.json"
+python3 launch.py --workspace ~/workspace/KDD20-Hands-on-Tutorial/5-distributed --num_trainers 1 --num_samplers 0 --num_servers 1 --part_config 4part_data/ogbn-products.json --ip_config ip_config.txt "python3 Distributed\ Node\ Classification.py --ip_config ip_config.txt --num-epochs 10 --batch-size 5000 --num-hidden 512"
 
-python3 launch.py --workspace ~/workspace/KDD20-Hands-on-Tutorial/5-distributed --num_client 4 --conf_path 4part_data/ogbn-products.json --ip_config ip_config.txt "python3 Distributed\ Node\ Classification-emb.py --ip_config ip_config.txt --num-epochs 1 --batch-size 5000 --num-hidden 512 --conf_path standalone_data/ogbn-products.json"
+python3 launch.py --workspace ~/workspace/KDD20-Hands-on-Tutorial/5-distributed --num_trainers 1 --num_samplers 0 --num_servers 1 --part_config 4part_data/ogbn-products.json --ip_config ip_config.txt "python3 Distributed\ Node\ Classification-emb.py --ip_config ip_config.txt --num-epochs 1 --batch-size 5000 --num-hidden 512"
 ```
 
