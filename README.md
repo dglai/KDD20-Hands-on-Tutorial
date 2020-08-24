@@ -16,8 +16,8 @@ Agenda
 | 10:30-11:00 | Virtual Coffee Break | | |
 | 11:00-12:00 | (Hands-on) GNN models for basic graph tasks | [notebook](https://github.com/dglai/KDD20-Hands-on-Tutorial/tree/master/3-basics) | Minjie Wang |
 | 12:00-13:00 | Virtual Lunch Break | | |
-| 13:00-14:30 | (Hands-on) GNN training on large graphs | [notebook](https://github.com/dglai/KDD20-Hands-on-Tutorial/tree/master/4%20-%20large%20graph) | Quan Gan |
-| 14:30-16:00 | (Hands-on) Distributed GNN training | [notebook](https://github.com/dglai/KDD20-Hands-on-Tutorial/tree/master/5-distributed) | Da Zheng |
+| 13:00-14:30 | (Hands-on) GNN mini-batch training | [notebook](https://github.com/dglai/KDD20-Hands-on-Tutorial/tree/master/4%20-%20large%20graph) | Quan Gan |
+| 14:30-16:00 | (Hands-on) GNN distributed training | [notebook](https://github.com/dglai/KDD20-Hands-on-Tutorial/tree/master/5-distributed) | Da Zheng |
 
 Section Content
 ---
