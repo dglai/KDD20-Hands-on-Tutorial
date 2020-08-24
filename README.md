@@ -11,7 +11,7 @@ Agenda
 
 | Time | Session | Material | Presenter |
 |:----:|:-------:|:--------:|:---------:|
-| 9:00-10:00 | Overview of Graph Neural Networks | [slides](https://github.com/zheng-da/dgl-tutorial-full/blob/master/GNN_overview.pptx) | George Karypis |
+| 9:00-10:00 | Overview of Graph Neural Networks | [slides](https://github.com/dglai/KDD20-Hands-on-Tutorial/blob/master/GNN_overview.pptx) | George Karypis |
 | 10:00-10:30 | Overview of Deep Graph Library (DGL) | [slides](https://github.com/zheng-da/dgl-tutorial-full/blob/master/dgl_api/dgl-www-zz.pptx) | Zheng Zhang |
 | 10:30-11:00 | Virtual Coffee Break | | |
 | 11:00-12:00 | (Hands-on) GNN models for basic graph tasks | [notebook](https://github.com/dglai/KDD20-Hands-on-Tutorial/tree/master/3-basics) | Minjie Wang |
