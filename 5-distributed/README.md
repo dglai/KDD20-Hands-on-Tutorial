@@ -20,8 +20,8 @@ This introduction assumes the readers have read the previous section on mini-bat
 
 Step 1: Convert the Notebooks into training scripts:
 ```bash
-jupyter nbconvert --to script Distributed\ Node\ Classification.ipynb
-jupyter nbconvert --to script Distributed\ Node\ Classification-emb.ipynb
+jupyter nbconvert --to script 3-Distributed\ Node\ Classification.ipynb --output-dir scripts
+jupyter nbconvert --to script 4-Distributed\ Node\ Classification-emb.ipynb --output-dir scripts
 ```
 
 Step 2: Set up ssh passwordless access between machines in the cluster.
@@ -29,25 +29,20 @@ Step 2: Set up ssh passwordless access between machines in the cluster.
 Step 3: Download the launch script:
 ```bash
 wget https://raw.githubusercontent.com/dmlc/dgl/master/tools/launch.py
-wget https://raw.githubusercontent.com/dmlc/dgl/master/tools/copy_partitions.py
+wget https://raw.githubusercontent.com/dmlc/dgl/master/tools/copy_files.py
 ```
 
 Step 4: Copy data to the cluster
 ```bash
-python3 copy_partitions.py --ip_config ip_config.txt --workspace ~/KDD20-Hands-on-Tutorial/5-distributed/ --rel_data_path 4part_data --part_config 4part_data/ogb-product.json
+python3 copy_files.py --ip_config ip_config.txt --workspace ~/KDD20-Hands-on-Tutorial/5-distributed/ --rel_data_path data --part_config 4part_data/ogbn-products.json --script_folder scripts
 ```
 
 Step 5: Train the model:
-Standalone mode:
-```bash
-python3 -m torch.distributed.launch  Distributed\ Node\ Classification.py --ip_config ip_config.txt --num-epochs 10 --batch-size 5000 --num-hidden 512 --conf_path standalone_data/ogbn-products.json
-```
 
-Distributed mode:
 When running distributed training, a user needs to ensure that the training script and its dependencies have been copied to the workspace of all the machines.
 ```bash
-python3 launch.py --workspace ~/workspace/KDD20-Hands-on-Tutorial/5-distributed --num_trainers 1 --num_samplers 0 --num_servers 1 --part_config 4part_data/ogbn-products.json --ip_config ip_config.txt "python3 Distributed\ Node\ Classification.py --ip_config ip_config.txt --num-epochs 10 --batch-size 5000 --num-hidden 512"
+python3 launch.py --workspace ~/KDD20-Hands-on-Tutorial/5-distributed --num_trainers 1 --num_samplers 0 --num_servers 1 --part_config data/ogbn-products.json --ip_config ip_config.txt "python3 scripts/3-Distributed\ Node\ Classification.py --ip_config ip_config.txt --num-epochs 10 --batch-size 5000 --num-hidden 512"
 
-python3 launch.py --workspace ~/workspace/KDD20-Hands-on-Tutorial/5-distributed --num_trainers 1 --num_samplers 0 --num_servers 1 --part_config 4part_data/ogbn-products.json --ip_config ip_config.txt "python3 Distributed\ Node\ Classification-emb.py --ip_config ip_config.txt --num-epochs 1 --batch-size 5000 --num-hidden 512"
+python3 launch.py --workspace ~/KDD20-Hands-on-Tutorial/5-distributed --num_trainers 1 --num_samplers 0 --num_servers 1 --part_config data/ogbn-products.json --ip_config ip_config.txt "python3 scripts/4-Distributed\ Node\ Classification-emb.py --ip_config ip_config.txt --num-epochs 1 --batch-size 5000 --num-hidden 512"
 ```
 
